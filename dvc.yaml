@@ -1,0 +1,44 @@
+stages:
+  data_ingestion:
+    cmd: python src/data_ingestion.py    #command to run data_ingestion 
+    deps:
+      - src/data_ingestion.py    #where data_ingestion is present in src
+    outs:
+      - data/raw            #save the output in data/raw directory    
+
+  
+  data_preprocessing:
+    cmd: python src/data_preprocessing.py   #command to run data_preprocessing
+    deps:
+      - data/raw                            #from data/raw directory take test and train csv files for processing
+      - src/data_preprocessing.py           #where data_preprocessing is present in src
+    outs:
+      - data/processed                      #save the output in data/processed directory    
+
+  
+  feature_engineering:    
+    cmd: python src/feature_engineering.py        #command to run feature_engineering
+    deps:
+      - data/processed                            #from data/processed take test and train processed csv files for processing
+      - src/feature_engineering.py                 #where feature_engineering is present in src
+    outs:
+      - data/features                               #save the output in data/features directory    
+
+
+  model_building:
+    cmd: python src/model_building.py              #command to run model_building
+    deps:
+      - data/features                              #from data/features take test and train bow processed csv files for processing
+      - src/model_building.py                       #where model_building is present in src
+    outs:
+      - model.pkl                                   #save the output as model.pkl format
+
+
+  
+  model_evaluation:                                 #command to run model_evaluation
+    cmd: python src/model_evaluation.py
+    deps:
+        - model.pkl                                 #from the ML-Pipeline-using-DVC take pkl files for model_evaluation
+        - src/model_evaluation.py                     #where model_evaluation is present in ML-Pipeline-using-DVC
+    metrics:
+        - metrics.json                                    #save the output as metrics.json format
