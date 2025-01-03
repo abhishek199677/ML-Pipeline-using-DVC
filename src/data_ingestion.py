@@ -13,7 +13,7 @@ def load_data(data_url: str) -> pd.DataFrame:     #function to load the data frr
         print(f"Error: Failed to parse the CSV file from {data_url}.")
         print(e)
         raise
-except Exception as e:
+    except Exception as e:
         print(f"Error: An unexpected error occurred while loading the data.")
         print(e)
         raise
