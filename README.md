@@ -13,13 +13,13 @@ pip install -r requirements.txt
 
 # DVC Commands
 
-git init
+git init   #initalising git
 
-dvc init
+dvc init  #initalising dvc
 
-dvc repro
+dvc repro   #main end point to run the entire pipeline/project
 
-dvc dag
+dvc dag   #to see the pipeline diagram
 
-dvc metrics show
+dvc metrics show  #shows the metrics
 
