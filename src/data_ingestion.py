@@ -51,7 +51,7 @@ def save_data(train_data: pd.DataFrame, test_data: pd.DataFrame, data_path: str)
 
 def main():    #calling of all the above functions one by one
     try:
-        df = load_data(data_url='https://raw.githubusercontent.com/entbappy/Branching-tutorial/refs/heads/master/tweet_emotions.csv')
+        df = load_data(data_url='https://github.com/abhishek199677/ML-Pipeline-using-DVC/raw/refs/heads/main/output.csv')
         final_df = preprocess_data(df)
         train_data, test_data = train_test_split(final_df, test_size=0.2, random_state=42)
         save_data(train_data, test_data, data_path='data')
